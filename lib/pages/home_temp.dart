@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'info.dart';
 final opciones = ['Omar', 'Carolina', 'Jesus', 'Gerardo', 'Jorge'];
 class HomePageTemp extends StatelessWidget {
   @override
@@ -12,13 +12,13 @@ class HomePageTemp extends StatelessWidget {
       ),
       body: ListView(
         
-        children: _crearItems(),
+        children: _crearItems(context),
       ),
     );
   }
 }
 
-List<Widget> _crearItems() {
+List<Widget> _crearItems(BuildContext context) {
   List<Widget> lista = new List<Widget>();
   for (String opt in opciones) {
     final tempWidget = ListTile(
@@ -27,6 +27,9 @@ List<Widget> _crearItems() {
       leading: Icon(Icons.account_box),
       trailing: Icon(Icons.keyboard_arrow_right_rounded),
       onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context)=> Info(opt)));
       },
     );
     lista..add(tempWidget)..add(Divider());
